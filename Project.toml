@@ -1,0 +1,4 @@
+[deps]
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+SnipsHermesQnD = "25d574d2-464b-11e9-11e2-5d8aafb6ee0d"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
