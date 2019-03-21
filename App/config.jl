@@ -31,3 +31,4 @@ NAME_TV_IP = "IP_address_of_TV"
 INTENT_ACTIONS = Dict{String, Function}()
 INTENT_ACTIONS["PoweronAmazonFire"] = powerOn
 INTENT_ACTIONS["PoweroffAmazonFire"] = powerOff
+INTENT_ACTIONS["MediacenterAtAmazonFire"] = startMediacenter

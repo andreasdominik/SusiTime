@@ -29,9 +29,38 @@ function powerOff(topic, payload)
 
     Power off.
 """
-
 function powerOff(topic, payload)
 
     amazonSleep()
     switchOFFViera()
+end
+
+
+
+"""
+function startMediacenter(topic, payload)
+
+    Power off.
+"""
+function startMediacenter(topic, payload)
+
+    amazonWakeUp()
+
+    mediacenter = extractSlotValue(payload, "Mediathek")
+
+    # ARD/ZDF Mediathek:
+    if occursin(r"ARD"is, mediacenter)
+        Snips.publishSay("Ich öffne das A R D Mediacenter auf Amazon Fire",
+                         wait = false, lang = "de_DE")
+        amazonMediaCenter("ard")
+
+    elseif occursin(r"ZDF"is, mediacenter)
+        Snips.publishSay("Ich öffne das Z D F Mediacenter auf Amazon Fire",
+                         wait = false, lang = "de_DE")
+        amazonMediaCenter("zdf")
+        
+    else
+        Snips.publishSay("Ich konnte nicht verstehen, welches Mediacenter gemeint war",
+                         wait = false, lang = "de_DE")
+    end
 end
