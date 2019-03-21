@@ -29,6 +29,5 @@ NAME_TV_IP = "IP_address_of_TV"
 #     (such as: "switch TV in room abc").
 #
 INTENT_ACTIONS = Dict{String, Function}()
-INTENT_ACTIONS["PoweronPavoni"] = powerOnMyDevice
-INTENT_ACTIONS["PoweroffPavoni"] = powerOffMyDevice
-INTENT_ACTIONS["MakeEspresso"] = brew
+INTENT_ACTIONS["PoweronAmazonFire"] = powerOn
+INTENT_ACTIONS["PoweroffAmazonFire"] = powerOff

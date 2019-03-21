@@ -11,7 +11,7 @@
 #   as Symbols (Julia-style)
 #
 """
-function powerOnMyDevice(topic, payload)
+function powerOn(topic, payload)
 
     Power on.
 """
@@ -21,4 +21,17 @@ function powerOn(topic, payload)
                      wait = false, lang = "de_DE")
 
     amazonWakeUp()
+end
+
+
+"""
+function powerOff(topic, payload)
+
+    Power off.
+"""
+
+function powerOff(topic, payload)
+
+    amazonSleep()
+    switchOFFViera()
 end
