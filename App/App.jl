@@ -16,7 +16,9 @@ include("$MODULE_DIR/skill-actions.jl")
 include("$MODULE_DIR/callback.jl")
 include("$MODULE_DIR/config.jl")
 
-
+# Viera needed:
+#
+include("$MODULE_DIR/apiViera.jl")
 
 
 export mainCallback,

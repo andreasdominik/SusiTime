@@ -17,7 +17,8 @@ SLOT_NAME_TV_CHANNEL = "Coffee_Type"
 
 # Parameter names in config.ini:
 #
-NAME_IP = "IP_address_of_Coffe_Machine"
+NAME_GPIO_KODI = "kodiGPIO"
+NAME_TV_IP = "IP_address_of_TV"
 
 
 # link between actions and intents:

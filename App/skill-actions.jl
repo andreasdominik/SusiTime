@@ -15,10 +15,10 @@ function powerOnMyDevice(topic, payload)
 
     Power on.
 """
-function powerOnMyDevice(topic, payload)
+function powerOn(topic, payload)
 
-    Snips.publishSay("""OK. Let me see, if I can power on the coffee machine""",
-                     wait = false, lang = "en_GB")
+    Snips.publishSay("""Ich schalte den Amazon Fire Stick und den Fernseher ein.""",
+                     wait = false, lang = "de_DE")
 
-    switchON()
+    amazonWakeUp()
 end

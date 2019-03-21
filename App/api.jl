@@ -3,31 +3,51 @@
 # skill-actions:
 #
 
-function switchOFF()
+ADB = "$MODULE_DIR/controlFireTV.sh"
 
-    if isON()
-        pavoniSendCommand("powerOff")
+"""
+function amazonWakeUp()
+
+    wake up the Amazon fire stick and switch on the Viera TV if necessary
+"""
+function amazonWakeUp()
+
+    DELAY = 0.7
+    success = adbCmds("wake")
+
+    switchONViera()
+    sleep(4*DELAY)
+    AVViera()
+    sleep(DELAY)
+    arrowsViera("down")
+    sleep(DELAY)
+    arrowsViera("down")
+    sleep(DELAY)
+    arrowsViera("center")
+
+
+    if !success
+        say("""Aus irgendeinem Grund lässt sich der Amazon Fire Stick nicht
+            auwecken!""")
     end
+    return success
 end
 
 
-
-function switchON()
-
-    if ! isON()
-        #     some code to test, if the device is already switched on ...
-    end
+function amazonSleep()
+    adbCmds("sleep")
 end
 
 
+function amazonMediaCenter(mediacenter)
+    adbCmds("$mediacenter")
+end
 
+#
+# adb internals:
+#
+function adbCmds(cmds)
 
-
-
-function pavoniSendCommand(cmd; value = 0)
-
-    println("sending command: $cmd and value: $value to the coffe machine.")
-
-    return Snips.tryrun(`a command to send something to the device`,
-                         errorMsg = "unable to execute the command: $cmd")
+    return tryrun(`$ADB $(split(cmds))`, errorMsg =
+            "Ich konnte den Befehl $cmds nicht an den Fire Stick senden!")
 end
