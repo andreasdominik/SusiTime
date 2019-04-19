@@ -3,7 +3,13 @@ DEVELOPER_NAME = "andreasdominik"
 # Properies of the current session:
 #
 
-# Java flvours:
+# Bash-script to control coffee machine
+# run like:
+#   $ controlJava.sh 192.168.1.65 ON
+#
+SCRIPT = "controlJava.sh"
+
+# Java flavours:
 #
 JAVA = Dict{String, Int64}()
 JAVA["Espresso"] = 1
@@ -13,12 +19,11 @@ JAVA["Latte"] = 2
 # Slots:
 # Name of slots to be extracted from intents:
 #
-SLOT_NAME_TV_CHANNEL = "Coffee_Type"
+SLOT_JAVA_TYPE = "Coffee_Type"
 
 # Parameter names in config.ini:
 #
-NAME_GPIO_KODI = "kodiGPIO"
-NAME_TV_IP = "IP_address_of_TV"
+NAME_JAVA_IP = "IP_address_of_CoffeeMachine"
 
 
 # link between actions and intents:
@@ -29,6 +34,6 @@ NAME_TV_IP = "IP_address_of_TV"
 #     (such as: "switch TV in room abc").
 #
 INTENT_ACTIONS = Dict{String, Function}()
-INTENT_ACTIONS["PoweronAmazonFire"] = powerOn
-INTENT_ACTIONS["PoweroffAmazonFire"] = powerOff
-INTENT_ACTIONS["MediacenterAtAmazonFire"] = startMediacenter
+INTENT_ACTIONS["PowerOnCoffee"] = powerOn
+INTENT_ACTIONS["PowerOffCoffee"] = powerOff
+# INTENT_ACTIONS["BrewCoffee"] = brewCoffee

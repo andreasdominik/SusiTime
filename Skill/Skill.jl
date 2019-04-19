@@ -4,7 +4,7 @@
 # Normally, it is NOT necessary to change anything in this file,
 # unless you know what you are doing!
 #
-module App
+module Skill
 
 import SnipsHermesQnD
 Snips = SnipsHermesQnD
@@ -15,10 +15,6 @@ include("$MODULE_DIR/api.jl")
 include("$MODULE_DIR/skill-actions.jl")
 include("$MODULE_DIR/callback.jl")
 include("$MODULE_DIR/config.jl")
-
-# Viera needed:
-#
-include("$MODULE_DIR/apiViera.jl")
 
 
 export mainCallback,

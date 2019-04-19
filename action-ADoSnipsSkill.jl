@@ -5,6 +5,8 @@
 # Normally, it is NOT necessary to change anything in this file,
 # unless you know what you are doing!
 #
+# A. Dominik, April 2019, © GPL3
+#
 
 APP_DIR = dirname(Base.source_path())
 
@@ -15,11 +17,8 @@ import JSON
 import SnipsHermesQnD
 Snips = SnipsHermesQnD
 
-include("$APP_DIR/App/App.jl")
-import Main.Viera
-
-
-
+include("$APP_DIR/Skill/Skill.jl")
+import Main.Skill
 
 
 function main()
@@ -28,9 +27,6 @@ function main()
 
     intents = App.DEVELOPER_NAME * ":" .* keys(App.INTENT_ACTIONS)
     Snips.subscribe2Intents(intents, App.mainCallback)
-
 end
-
-
 
 main()
