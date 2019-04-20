@@ -25,8 +25,8 @@ function main()
 
     Snips.readConfig("$APP_DIR")
 
-    intents = App.DEVELOPER_NAME * ":" .* keys(App.INTENT_ACTIONS)
-    Snips.subscribe2Intents(intents, App.mainCallback)
+    intents = Skill.DEVELOPER_NAME * ":" .* keys(Skill.INTENT_ACTIONS)
+    Snips.subscribe2Intents(intents, Skill.mainCallback)
 end
 
 main()

@@ -25,5 +25,8 @@ function mainCallback(topic, payload)
         Snips.setSiteId(payload[:siteId])
         Snips.setSessionId(payload[:sessionId])
         INTENT_ACTIONS[intent](topic, payload)
+
+        if CONTINUE_WO_HOTWORD
+            Snips.publishStartSessionAction("")
     end
 end

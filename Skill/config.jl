@@ -1,3 +1,8 @@
+# set CONTINUE_WO_HOTWORD to true to be able to chain
+# commands without need of a hotword in between:
+#
+CONTINUE_WO_HOTWORD = true
+
 DEVELOPER_NAME = "andreasdominik"
 
 # Properies of the current session:

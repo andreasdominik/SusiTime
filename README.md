@@ -1,4 +1,4 @@
-# ADoSnips... Template App for a Juolia Skill
+# ADoSnips... Template App for a Julia Skill
 
 Experimental Snips skill template.
 Use it to build a Julia skill for Snips.
