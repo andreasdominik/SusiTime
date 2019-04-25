@@ -11,24 +11,20 @@
 #   as Symbols (Julia-style)
 #
 """
-function powerOn(topic, payload)
+function templateAction(topic, payload)
 
-    Power on.
+    Dummyaction for the template.
 """
-function powerOn(topic, payload)
+function templateAction(topic, payload)
 
-    Snips.publishEndSession("""Ich schalte die Kaffemaschine ein.""")
-    switchJava(:on)
-end
+    println("- ADoSnipsOnOff: action templateAction() started.")
+    # find the device in payload:
+    #
+    name = Snips.getConfig(INI_MY_NAME)
 
-
-"""
-function powerOff(topic, payload)
-
-    Power off.
-"""
-function powerOff(topic, payload)
-
-    Snips.publishEndSession("""Ich schalte die Kaffemaschine aus.""")
-    switchJava(:off)
+    # say who you are:
+    #
+    Snips.publishSay(TEXTS[:bravo], lang = LANG)
+    Snips.publishEndSession("$(TEXTS[:iam]) $name")
+    return true
 end

@@ -6,15 +6,19 @@
 #
 module Skill
 
-import SnipsHermesQnD
+import Main.SnipsHermesQnD
 Snips = SnipsHermesQnD
 
 MODULE_DIR = dirname(Base.source_path())
+const APP_DIR = "$MODULE_DIR/.."
 
-include("$MODULE_DIR/api.jl")
-include("$MODULE_DIR/skill-actions.jl")
-include("$MODULE_DIR/callback.jl")
-include("$MODULE_DIR/config.jl")
+Snips.readConfig("$APP_DIR")
+
+include("api.jl")
+include("skill-actions.jl")
+include("callback.jl")
+include("languages.jl")
+include("config.jl")
 
 
 export mainCallback,

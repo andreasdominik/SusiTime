@@ -24,9 +24,10 @@ function mainCallback(topic, payload)
     if haskey(INTENT_ACTIONS, intent)
         Snips.setSiteId(payload[:siteId])
         Snips.setSessionId(payload[:sessionId])
-        INTENT_ACTIONS[intent](topic, payload)
+        result = INTENT_ACTIONS[intent](topic, payload)
 
-        if CONTINUE_WO_HOTWORD
+        if CONTINUE_WO_HOTWORD && result
             Snips.publishStartSessionAction("")
+        end
     end
 end

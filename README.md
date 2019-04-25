@@ -1,6 +1,13 @@
-# ADoSnips... Template App for a Julia Skill
+# ADoSnipsTemplate
 
-Experimental Snips skill template.
-Use it to build a Julia skill for Snips.
+This is a template skill for the SnipsHermesQnD framework for Snips.ai
+written in Julia.
 
-... project is work-in-progress ...
+# Julia
+
+This skill is (like the entire SnipsHermesQnD framework) written in the
+modern programming language Julia (because Julia is 50-100 times faster
+then Python and coding is much much easier and much more straight forward).
+However "Pythonians" often need some time to get familiar with Julia.
+
+If you are ready for the step forward, start here: https://julialang.org/

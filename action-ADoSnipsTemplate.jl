@@ -14,8 +14,9 @@ using Pkg
 Pkg.activate(APP_DIR)
 
 import JSON
-import SnipsHermesQnD
-Snips = SnipsHermesQnD
+include("$APP_DIR/SnipsHermesQnD/src/SnipsHermesQnD.jl")
+import Main.SnipsHermesQnD
+Snips = Main.SnipsHermesQnD
 
 include("$APP_DIR/Skill/Skill.jl")
 import Main.Skill

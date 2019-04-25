@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 #
 echo "... setting up Julia ecosystem"
 
@@ -11,7 +11,7 @@ fi
 
 # install Julia dependencies:
 #
-julia -e 'using Pkg;  Pkg.activate("."); Pkg.instantiate(); Pkg.status()'
+julia -e 'using Pkg;  Pkg.add("JSON"); Pkg.add("StatsBase"); Pkg.update(); Pkg.status()'
 
 
 # check debian packages:

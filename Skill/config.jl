@@ -1,36 +1,33 @@
+
+# language settings:
+# 1) set LANG to "en", "de", "fr", etc.
+# 2) link the Dict with messages to the version with
+#    desired language as defined in languages.jl:
+#
+
+const LANG = Snips.getIniLanguage() != nothing ? Snips.getIniLanguage() : "de"
+
+# DO NOT CHANGE THE FOLLOWING 3 LINES UNLESS YOU KNOW
+# WHAT YOU ARE DOING!
 # set CONTINUE_WO_HOTWORD to true to be able to chain
 # commands without need of a hotword in between:
 #
-CONTINUE_WO_HOTWORD = true
-
-DEVELOPER_NAME = "andreasdominik"
-
-# Properies of the current session:
-#
-
-# Bash-script to control coffee machine
-# run like:
-#   $ controlJava.sh 192.168.1.65 ON
-#
-SCRIPT = "controlJava.sh"
-
-# Java flavours:
-#
-JAVA = Dict{String, Int64}()
-JAVA["Espresso"] = 1
-JAVA["Latte"] = 2
+const CONTINUE_WO_HOTWORD = true
+const DEVELOPER_NAME = "andreasdominik"
 
 
 # Slots:
 # Name of slots to be extracted from intents:
 #
-SLOT_JAVA_TYPE = "Coffee_Type"
+## const SLOT_ROOM = "room"
+## const SLOT_DEVICE = "device"
+## const SLOT_ON_OFF = "on_or_off"
 
-# Parameter names in config.ini:
+# name of entry in config.ini:
 #
-NAME_JAVA_IP = "IP_address_of_CoffeeMachine"
+const INI_MY_NAME = my_name
 
-
+#
 # link between actions and intents:
 # intent is linked to action{Funktion}
 # the action is only matched, if
@@ -38,7 +35,23 @@ NAME_JAVA_IP = "IP_address_of_CoffeeMachine"
 #   * if the siteId matches, if site is  defined in config.ini
 #     (such as: "switch TV in room abc").
 #
-INTENT_ACTIONS = Dict{String, Function}()
-INTENT_ACTIONS["PowerOnCoffee"] = powerOn
-INTENT_ACTIONS["PowerOffCoffee"] = powerOff
-# INTENT_ACTIONS["BrewCoffee"] = brewCoffee
+INTENT_ACTIONS_DE = Dict{String, Function}()
+INTENT_ACTIONS_DE["ADoSnipsTemplateDE"] = templateAction
+
+INTENT_ACTIONS_EN = Dict{String, Function}()
+INTENT_ACTIONS_EN["ADoSnipsTemplateEN"] = templateAction
+
+
+
+# Language-dependent settings:
+#
+if LANG == "de"
+    INTENT_ACTIONS = INTENT_ACTIONS_DE
+    TEXTS = TEXTS_DE
+elseif LANG == "en"
+    INTENT_ACTIONS = INTENT_ACTIONS_EN
+    TEXTS = TEXTS_EN
+else
+    INTENT_ACTIONS = INTENT_ACTIONS_DE
+    TEXTS = TEXTS_DE
+end
