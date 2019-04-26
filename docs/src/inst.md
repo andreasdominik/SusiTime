@@ -22,7 +22,6 @@ Installation of Julia is simple:
   `/usr/local/bin`:
 
 All together:
-
   ```
   sudo chown $(whoami) /opt
 
