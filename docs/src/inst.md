@@ -22,7 +22,7 @@ Installation of Julia is simple:
   `/usr/local/bin`:
 
 All together:
-  ```
+  ```bash
   sudo chown $(whoami) /opt
   mkdir /opt/Julia
   mv ~/Downloads/julia-<version>.tar.gz .
