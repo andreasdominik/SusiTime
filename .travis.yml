@@ -22,5 +22,3 @@ jobs:
         - julia --project=docs/ -e 'using Pkg; Pkg.add("Documenter")'
         - julia --project=docs/ docs/make.jl
       after_success: skip
-
-      
