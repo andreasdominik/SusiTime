@@ -10,15 +10,15 @@ makedocs(modules=[SOM],
                   "Introduction" => "index.md",
                   "Installation" => "inst.md",
                   "SnipsHermesQnD" => "shqd.md"
-                  "Create a new Skill" => "makeskill.md"
+                  "Skills" => "makeskill.md"
                                      ],
                    "API" => Any[
                             "Hermes" => "api/hermes.md",
-                            "Low-level MQTT" => "api/mqtt.md",
-                            "Dialogie manager" => "api/dialogues.md"
-                            "read from config.ini" => "api/ini.md"
-                            "work with slots" => "api/dialogues.md"
-                            "Utilities" => "api/dialogues.md"
+                            "MQTT" => "api/mqtt.md",
+                            "Dialogues" => "api/dialogues.md"
+                            "config.ini" => "api/ini.md"
+                            "Slots" => "api/slots.md"
+                            "Utilities" => "api/utils.md"
                                ],
                     "License" => "LICENSE.md"
                   ],
