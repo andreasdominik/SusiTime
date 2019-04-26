@@ -17,14 +17,28 @@ function templateAction(topic, payload)
 """
 function templateAction(topic, payload)
 
+    # log:
     println("- ADoSnipsOnOff: action templateAction() started.")
-    # find the device in payload:
+
+    # get my name from config.ini:
     #
-    name = Snips.getConfig(INI_MY_NAME)
+    myName = Snips.getConfig(INI_MY_NAME)
+    if myName == nothing
+        Snips.publishEndSession(TEXTS[:noname])
+        return false
+    end
+
+    # get the word to repeat from slot:
+    #
+    word = Snips.extractSlotValue(payload, SLOT_WORD)
+    if word == nothing
+        Snips.publishEndSession(TEXTS[:dunno])
+        return true
+    end
 
     # say who you are:
     #
     Snips.publishSay(TEXTS[:bravo], lang = LANG)
-    Snips.publishEndSession("$(TEXTS[:iam]) $name")
+    Snips.publishEndSession("$(TEXTS[:iam])")
     return true
 end

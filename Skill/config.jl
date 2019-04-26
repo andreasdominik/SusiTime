@@ -19,9 +19,7 @@ const DEVELOPER_NAME = "andreasdominik"
 # Slots:
 # Name of slots to be extracted from intents:
 #
-## const SLOT_ROOM = "room"
-## const SLOT_DEVICE = "device"
-## const SLOT_ON_OFF = "on_or_off"
+const SLOT_WORD = "a_word"
 
 # name of entry in config.ini:
 #
