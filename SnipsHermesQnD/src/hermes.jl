@@ -47,7 +47,7 @@ function listenIntentsOnetime(intents; moreTopics = nothing)
 # Arguments
     * intents: Abstract String or List of Abtsract Strings to define
                intents to subscribe or nothing
-   * moreTopics: keyword arg to provide additional topics to subscribe,
+    * moreTopics: keyword arg to provide additional topics to subscribe,
 
 # Value:
    Return values are topic (as String) and payload (as Dict or as
@@ -82,6 +82,9 @@ function askYesOrNoOrUnknown(question)
     Ask the question and listen to the intent "ADoSnipsYesNoDE"
     and return :yes if "Yes" is answered or :no if "No" or
     :unknown otherwise.
+
+# Arguments:
+    * question: String with the question to uttered
 """
 function askYesOrNoOrUnknown(question)
 
@@ -122,6 +125,9 @@ function askYesOrNoOrUnknown(question)
 
     Ask the question and listen to the intent "ADoSnipsYesNoDE"
     and return :true if "Yes" or "No" otherwise.
+
+# Arguments:
+    * question: String with the question to uttered
 """
 function askYesOrNo(question)
 
@@ -138,7 +144,8 @@ function publishEndSession(text; sessionId = CURRENT_SESSION_ID)
 
 # Arguments:
     * sessionId: ID of the session to be terminated as String
-    * text: text to be said vie TTS
+                 If omiited, sessionId of the current will be inserted.
+    * text: text to be said via TTS
 """
 function publishEndSession(text = nothing, sessionId = CURRENT_SESSION_ID)
 

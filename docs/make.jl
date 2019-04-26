@@ -1,8 +1,12 @@
 using Documenter
 
+# tell Documenter, where so look for source files:
+#
+push!(LOAD_PATH,"SnipsHermesQnd/src/")
+
 makedocs(#modules=[SOM],
          clean = false,
-         format = :html,
+         format = Documenter.HTML(),
          #assets = ["assets/favicon.ico"],
          sitename = "ADoSnipsTemplate",
          authors = "Andreas Dominik",
@@ -21,8 +25,8 @@ makedocs(#modules=[SOM],
                     "License" => "LICENSE.md"
                   ],
                   # Use clean URLs, unless built as a "local" build
-          html_prettyurls = !("local" in ARGS),
-          html_canonical = "https://andreasdominik.github.io/ADoSnipsTemplate/stable/",
+          format = Documenter.HTML(prettyurls = !("local" in ARGS)),
+          format = Documenter.HTML(canonical = "https://andreasdominik.github.io/ADoSnipsTemplate/dev/"),
          )
 
 deploydocs(repo   = "github.com/andreasdominik/ADoSnipsTemplate.git",
