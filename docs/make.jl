@@ -1,6 +1,6 @@
-using Documenter, SOM
+using Documenter
 
-makedocs(modules=[SOM],
+makedocs(#modules=[SOM],
          clean = false,
          format = :html,
          #assets = ["assets/favicon.ico"],
@@ -9,14 +9,12 @@ makedocs(modules=[SOM],
          pages = [
                   "Introduction" => "index.md",
                   "Installation" => "inst.md",
-                  "SnipsHermesQnD" => "shqd.md"
-                  "Skills" => "makeskill.md"
-                                     ],
+                  "Skills" => "makeskill.md",
                    "API" => Any[
                             "Hermes" => "api/hermes.md",
-                            "Dialogues" => "api/dialogues.md"
-                            "config.ini" => "api/ini.md"
-                            "Slots" => "api/slots.md"
+                            "Dialogues" => "api/dialogues.md",
+                            "config.ini" => "api/ini.md",
+                            "Slots" => "api/slots.md",
                             "MQTT" => "api/mqtt.md",
                             "Utilities" => "api/utils.md"
                                ],
@@ -28,8 +26,7 @@ makedocs(modules=[SOM],
          )
 
 deploydocs(repo   = "github.com/andreasdominik/ADoSnipsTemplate.git",
-           julia  = "1.0",
-           osname = "linux",
            target = "build",
+           branch = "gh-pages",
            deps = nothing,
            make = nothing)

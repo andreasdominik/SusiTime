@@ -55,7 +55,17 @@ after_success:
   # - julia -e 'using Coverage; println("My Path=$(pwd()). Coveralls=$(Coveralls.process_folder())"); Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
   # - julia -e 'using Coverage; Codecov.submit(Codecov.process_folder())'
-  # Documentation
-  - julia -e 'using Pkg; Pkg.add("Documenter")'
-  #- julia -e 'using Pkg; cd(Pkg.dir("SOM")); include(joinpath("docs", "make.jl"))'
-  - julia -e 'using Pkg; include(joinpath("docs", "make.jl"))'
+jobs:
+  include:
+    - stage: "Documentation"
+      julia: 1.0
+      os: linux
+      script:
+        - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
+                                               Pkg.instantiate()'
+        - julia --project=docs/ docs/make.jl
+      after_success: skip
+##   # Documentation
+##   - julia -e 'using Pkg; Pkg.add("Documenter")'
+##   #- julia -e 'using Pkg; cd(Pkg.dir("SOM")); include(joinpath("docs", "make.jl"))'
+##   - julia -e 'using Pkg; include(joinpath("docs", "make.jl"))'
