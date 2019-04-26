@@ -24,7 +24,7 @@ If you are ready for the step forward, start here: https://julialang.org/
   sudo ln -s /opt/Julia/julia-<version>/bin/julia
   ```
 
-  **... and you ar done!**
+  **... and you are done!**
 
 
   ## SnipsHermesQnD
