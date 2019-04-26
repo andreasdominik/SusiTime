@@ -14,10 +14,10 @@ makedocs(modules=[SOM],
                                      ],
                    "API" => Any[
                             "Hermes" => "api/hermes.md",
-                            "MQTT" => "api/mqtt.md",
                             "Dialogues" => "api/dialogues.md"
                             "config.ini" => "api/ini.md"
                             "Slots" => "api/slots.md"
+                            "MQTT" => "api/mqtt.md",
                             "Utilities" => "api/utils.md"
                                ],
                     "License" => "LICENSE.md"

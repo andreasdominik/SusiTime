@@ -27,9 +27,9 @@ pages:
   - Skills: makeskill.md
   - SnipsHermesQnd API:
       - Hermes: api/hermes.md
-      - MQTT: api/mqtt.md
       - Dialogues: api/dialogues.md
       - config.ini: api/ini.md
       - Slots: api/slots.md
+      - MQTT: api/mqtt.md
       - Utilities: api/util.md
   - License: LICENSE.md
