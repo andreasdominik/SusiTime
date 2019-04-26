@@ -9,20 +9,21 @@
 """
 function subscribe2Intents(intents, callback; moreTopics = nothing)
 
-    subscribe to one or a list of Intents, and listen forever, and run the callback
+    Subscribe to one or a list of Intents and listen forever and run the callback
     if a matching intent is recieved.
 
 # Arguments:
-    * intents: Abstract String or List of Abtsract Strings to define
+    * intents: Abstract String or List of Abstract Strings to define
                intents to subscribe. The intents will be expanded
                to topics (i.e. "hermes/intent/SwitchOnLight")
     * callback: Function to be executed for a incoming message
-    * moreTopics: keyword arg to provide additional topics to subscribe,
+    * moreTopics: keyword arg to provide additional topics to subscribe
+                (complete names of of topics).
 
 # Details:
     The callback function has the signature f(topic, intentMessage), where
     topic is a String and intentMessage a Dict{Symbol, Any} with the content
-    of the payload (assuming, that the payload is in JSON-formate) or
+    of the payload (assuming, that the payload is in JSON-format) or
     a String, if the payload is not valid JSON.
     The callback function is not spawned, but executed in the current
     thread. As a result the function is not listening during execution of the
@@ -40,7 +41,7 @@ end
 """
 function listenIntentsOnetime(intents; moreTopics = nothing)
 
-    subscribe to one or a list of Intents, but listen only until one
+    Subscribe to one or a list of Intents, but listen only until one
     matching intent is recognised.
 
 # Arguments
@@ -51,7 +52,7 @@ function listenIntentsOnetime(intents; moreTopics = nothing)
 # Value:
    Return values are topic (as String) and payload (as Dict or as
    String if JSON parsing is not possible).
-   If the topic is an intent, only the tntent id is returned
+   If the topic is an intent, only the intent id is returned
    (i.e.: devname:intentname without the leading hermes/intent/)
 """
 function listenIntentsOnetime(intents; moreTopics = nothing)
