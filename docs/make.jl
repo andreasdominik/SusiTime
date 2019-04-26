@@ -6,7 +6,6 @@ push!(LOAD_PATH,"SnipsHermesQnd/src/")
 
 makedocs(#modules=[SOM],
          clean = false,
-         format = Documenter.HTML(),
          #assets = ["assets/favicon.ico"],
          sitename = "ADoSnipsTemplate",
          authors = "Andreas Dominik",
@@ -25,8 +24,8 @@ makedocs(#modules=[SOM],
                     "License" => "LICENSE.md"
                   ],
                   # Use clean URLs, unless built as a "local" build
-          format = Documenter.HTML(prettyurls = !("local" in ARGS)),
-          format = Documenter.HTML(canonical = "https://andreasdominik.github.io/ADoSnipsTemplate/dev/"),
+          format = Documenter.HTML(prettyurls = !("local" in ARGS),
+                   canonical = "https://andreasdominik.github.io/ADoSnipsTemplate/dev/"),
          )
 
 deploydocs(repo   = "github.com/andreasdominik/ADoSnipsTemplate.git",
