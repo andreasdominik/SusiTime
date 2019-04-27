@@ -17,9 +17,10 @@ CURRENT_SESSION_ID = "1"
 TEXTS = TEXTS_EN
 
 export subscribeMQTT, readOneMQTT, publishMQTT,
-       subscribe2Intents, listen2Intents,
+       subscribe2Intents, listenIntentsOneTime,
        publishEndSession, publishContinueSession,
        publishStartSessionAction, publishStartSessionNotification,
+       configureIntent,
        askYesOrNoOrUnknown, askYesOrNo,
        publishSay,
        setLanguage, setSiteId, getSiteId,
@@ -27,6 +28,6 @@ export subscribeMQTT, readOneMQTT, publishMQTT,
        tryrun, tryReadTextfile,
        tryParseJSONfile, tryParseJSON, tryMkJSON,
        extractSlotValue, isInSlot, isOnOffMatched,
-       setGPIOtoON, setGPIOtoOFF
+       setGPIO
 
 end # module

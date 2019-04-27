@@ -2,7 +2,9 @@ using Documenter
 
 # tell Documenter, where so look for source files:
 #
-push!(LOAD_PATH,"SnipsHermesQnd/src/")
+include("../SnipsHermesQnD/src/SnipsHermesQnD.jl")
+using Main.SnipsHermesQnD
+
 
 makedocs(#modules=[SOM],
          clean = false,
