@@ -107,7 +107,7 @@ end
 """
     getAllConfig()
 
-Return the complete CONFIG_INI Dict.
+Return a Dict with the complete `config.ini`.
 """
 function getAllConfig()
 
@@ -120,7 +120,7 @@ end
 
 Return true if a parameter with name exists.
 
-# Arguments:
+## Arguments:
     * `name`: name of the config parameter as Symbol
 """
 function isinConfig(name::Symbol)

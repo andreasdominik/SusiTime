@@ -12,12 +12,17 @@ To get introduced with Julia, see [julialang.org](https://julialang.org/.)
 
 The framework allows for setting up skills/apps the same way as
 with the Python libraries. However, according to the more functional
-programming style in Julia more direct interactions are provided.
+programming style in Julia, more direct interactions are provided
+and
+technical stuff (such as siteId, sessionId, callback-functions, etc.)
+are handled transparently by the framework in the background.
+
 As an example, the function `listenIntentsOneTime()` can be used
 without a callback-function. Recognised intent and payload
 are returned as function value.
 
-On top of this, SnipsHermesQnD comes with simple question/answer method to
+On top of `listenIntentsOneTime()`, SnipsHermesQnD comes with
+a simple question/answer methods to
 ask questions answered by *Yes* or *No*
 (`askYesOrNo()` and `askYesOrNoOrUnknown()`).
 As a result, it is possible to get a quick user-feedback without leaving
@@ -39,7 +44,8 @@ function destroyAction(topic, payload)
     boom()
   else
     Snips.publishEndSession("""OK.
-                            Self-destruction sequence is aborted!""")
+                            Self-destruction sequence is aborted!
+                            Live long and in peace.""")
   end
 
   return true
