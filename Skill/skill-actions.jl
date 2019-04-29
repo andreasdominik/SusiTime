@@ -18,7 +18,7 @@ function templateAction(topic, payload)
 function templateAction(topic, payload)
 
     # log:
-    println("- ADoSnipsOnOff: action templateAction() started.")
+    println("- ADoSnipsTemplate: action templateAction() started.")
 
     # get my name from config.ini:
     #
