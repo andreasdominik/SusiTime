@@ -6,3 +6,42 @@ written in Julia.
 To learn about Snips, goto [snips.ai](https://snips.ai/.)
 
 To get introduced with Julia, see [julialang.org](https://julialang.org/.)
+
+
+## Similariries and differences to the Hermes dialogue manager
+
+The framework allows for setting up skills/apps the same way as
+with the Python libraries. However, according to the more functional
+programming style in Julia more direct interactions are provided.
+As an example, the function `listenIntentsOneTime()` can be used
+without a callback-function. Recognised intent and payload
+are returned as function value.
+
+On top of this, SnipsHermesQnD comes with simple question/answer method to
+ask questions answered by *Yes* or *No*
+(`askYesOrNo()` and `askYesOrNoOrUnknown()`).
+As a result, it is possible to get a quick user-feedback without leaving
+the control flow of a function, like illustrated in this skill action:
+
+```Julia
+"""
+function destroyAction(topic, payload)
+
+    Initialise self-destruction.
+"""
+function destroyAction(topic, payload)
+
+  # log message:
+  println("- ADoSnipsDestroyYourself: action destroyAction() started.")
+
+  if askYesOrNo("Do you really want to initiate self-destruction?")
+    Snips.publishEndSession("Self-destruction sequence started!")
+    boom()
+  else
+    Snips.publishEndSession("""OK.
+                            Self-destruction sequence is aborted!""")
+  end
+
+  return true
+end
+```
