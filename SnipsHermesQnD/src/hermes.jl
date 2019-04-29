@@ -84,7 +84,7 @@ and return :yes if "Yes" is answered or :no if "No" or
 :unknown otherwise.
 
 ## Arguments:
-* `question`: String with the question to uttered
+* `question`: String with the question to be uttered by Snips
 """
 function askYesOrNoOrUnknown(question)
 
@@ -242,7 +242,7 @@ end
 
 """
     publishStartSessionNotification(text; siteId = CURRENT_SITE_ID,
-                customData = nothing)
+                                    customData = nothing)
 
 MQTT publish start session with init notification
 
@@ -264,7 +264,7 @@ end
 
 """
     publishStartSession(siteId, init; customData = nothing,
-                             wait = true)
+                        wait = true)
 
 Worker function for publish start session; called for
 start session topics of type action or notification.
@@ -296,7 +296,7 @@ Let the TTS say something.
 ## Arguments:
 * `text`: text to be said vie TTS
 * `lang`: Optional language code to use when saying the text.
-        If nothing is provided, en_GB will be used
+        If nothing is provided, `en` will be used
 * `sessionId`: optional ID of the session if there is one
 * `id`: optional A request identifier. If provided, it will be passed back
       in the response on hermes/tts/sayFinished.

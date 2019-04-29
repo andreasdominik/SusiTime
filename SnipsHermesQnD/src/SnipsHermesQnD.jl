@@ -14,6 +14,7 @@ include("languages.jl")
 CONFIG_INI = Dict{Symbol, Any}()
 CURRENT_SITE_ID = "default"
 CURRENT_SESSION_ID = "1"
+LANG = "en"
 TEXTS = TEXTS_EN
 
 export subscribeMQTT, readOneMQTT, publishMQTT,
@@ -24,7 +25,7 @@ export subscribeMQTT, readOneMQTT, publishMQTT,
        askYesOrNoOrUnknown, askYesOrNo,
        publishSay,
        setLanguage, setSiteId, getSiteId,
-       readConfig, matchConfig, getConfig, isinConfig, getAllConfig
+       readConfig, matchConfig, getConfig, isinConfig, getAllConfig,
        tryrun, tryReadTextfile,
        tryParseJSONfile, tryParseJSON, tryMkJSON,
        extractSlotValue, isInSlot, isOnOffMatched,

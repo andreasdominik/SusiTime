@@ -2,13 +2,13 @@
 # helpers to work with config.ini
 
 """
-function readConfig(appDir)
+    readConfig(appDir)
 
-    Read the lines of the App's config file and
-    return a Dict with config values.
+Read the lines of the App's config file and
+return a Dict with config values.
 
-# Arguments:
-    * appDir: Directory of the currently running app.
+## Arguments:
+* `appDir`: Directory of the currently running app.
 """
 function readConfig(appDir)
 
@@ -45,14 +45,14 @@ end
 
 
 """
-function matchConfig(name::Symbol, val::String)
+    matchConfig(name::Symbol, val::String)
 
-    return true if the parameter name of the config Dict has the value
-    val (== val or one element == val)
+Return true if the parameter with name `name` of the config.ini has the value
+val or one element of the list as the value val.
 
-# Arguments:
-    * name: name of the config parameter as Symbol
-    * val: desired value
+## Arguments:
+* `name`: name of the config parameter as Symbol
+* `val`: desired value
 """
 function matchConfig(name::Symbol, val::String)
 
@@ -72,13 +72,16 @@ end
 
 
 """
-function getConfig(name)
+    getConfig(name)
 
-    return the parameter value of the config Dict config with
-    name or nothing if the param does not exist.
+Return the parameter value of the config.ini with
+name or nothing if the param does not exist.
+Return value is of type `AbstractString`, if it is a single value
+or of type `AbstractArray{AbstractString}` if the a list of
+values is read.
 
-# Arguments:
-    * name: name of the config parameter as Symbol or String
+## Arguments:
+* `name`: name of the config parameter as Symbol or String
 """
 function getConfig(name)
 
@@ -87,7 +90,7 @@ function getConfig(name)
     if !(name isa Symbol)
         name = Symbol(name)
     end
-    
+
     if haskey(CONFIG_INI, name)
         return CONFIG_INI[name]
     else
@@ -102,9 +105,9 @@ end
 
 
 """
-function getAllConfig()
+    getAllConfig()
 
-    return the complete CONFIG_INI Dict.
+Return the complete CONFIG_INI Dict.
 """
 function getAllConfig()
 
@@ -113,12 +116,12 @@ end
 
 
 """
-function isinConfig(name::Symbol)
+    isinConfig(name::Symbol)
 
-    return true if the parameter with name exists.
+Return true if a parameter with name exists.
 
 # Arguments:
-    * name: name of the config parameter as Symbol
+    * `name`: name of the config parameter as Symbol
 """
 function isinConfig(name::Symbol)
 

@@ -43,8 +43,8 @@ sudo ln -s /opt/Julia/julia-<version>/bin/julia
 ### IDEs
 
 Softwarte development is made comfortable by
-IDEs (Integrated development environment). For Julia best choice
-includes:
+IDEs (Integrated development environment). For Julia, best choices
+include:
 
 * My favourite is the [Atom editor](http://atom.io/) with the
   [Juno package](http://junolab.org) installed.
@@ -73,3 +73,16 @@ of SnipsHermesQnD with it.
 
 At some point in the future (when the framework is in a released state)
 this might change. But still existing skills will work.
+
+
+### Installation of the framework
+
+The framework needs not to be onstalled, because it is distributed
+with each skill (see above).
+However `Eclipse modquitto` must be installed. On a Raspberry Pi the packages
+`mosquitto` and `mosquitto-clients` are needed:
+
+```sh
+sudo apt-get install mosquitto
+sudo apt-get install mosquitto-clients
+```
