@@ -121,7 +121,7 @@ end
 
 
 """
-    askYesOrNoOrUnknown(question)
+    askYesOrNo(question)
 
 Ask the question and listen to the intent "ADoSnipsYesNoDE"
 and return :true if "Yes" or "No" otherwise.
