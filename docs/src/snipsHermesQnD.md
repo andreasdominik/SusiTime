@@ -1,4 +1,4 @@
-# Installation of the SnipsHermesQnD famework
+# The SnipsHermesQnD framework
 
 ## Julia
 
@@ -54,9 +54,15 @@ include:
   [Jupyter notebooks](http://jupyter.org). The Jupyter stack can be installed
   easily from the Julia REPL by adding the Package `IJulia`.
 
-### Differences
+### Noteworthy differences between Julia and Python
 
-Julia code is run-time-compiled only once, with consequences:
+Julia code looks very much like Python code, except of
+* there are no colons,
+* whitespaces have no meaning; blocks end with `end`,
+* sometimes types should be given explicitly.
+
+However Julia a typed language with all advantages; and code is
+run-time-compiled only once, with consequences:
 * If a function is called the first time, there is a time lack, because
   the compiler must finish his work before the actual code is executed.
 * Future function calls will use the compiled program, making Julia
@@ -86,3 +92,18 @@ However `Eclipse modquitto` must be installed. On a Raspberry Pi the packages
 sudo apt-get install mosquitto
 sudo apt-get install mosquitto-clients
 ```
+
+
+
+## SnipsHermesQnD details
+
+### Strategy
+
+
+### Common intent for on/off
+
+
+### Continue conversation without hotword
+
+
+### Multi-language support

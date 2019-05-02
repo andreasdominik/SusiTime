@@ -1,16 +1,26 @@
-# How to make a new skill
+# How to write a new skill
 
 This brief tutorial guides through the process of
 making a new skill from this template.
 
 
-## Get the template
+## Set up a new project
+### Get the template
 
 
-## Initialise a new project for the new skill
+### Initialise a new project for the new skill
 
+
+### Apapt the template
 
 ## Files in the template
 
+### Directory listing
 
-## Things to be adapted
+### Things to be adapted
+
+## Example with low-level API
+
+
+
+## Example with on/off
