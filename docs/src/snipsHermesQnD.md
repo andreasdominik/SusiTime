@@ -107,6 +107,8 @@ update your assistant with sam (`sam update-assistant`).
 ### Common intent for on/off
 
 
+### Ask and answer Yes-or-No
+
 ### Continue conversation without hotword
 
 

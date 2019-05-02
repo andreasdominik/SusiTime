@@ -350,7 +350,7 @@ end
 Action to be combined with the ADoSnipsOnOFF intent.
 Depending on the payload the function returns:
 * :on if "on"
-* :off
+* :off if "off"
 * :matched, if the device is matched but no on or off
 * :unmatched, if one of
     * wrong siteId
