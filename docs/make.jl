@@ -15,16 +15,8 @@ makedocs(#modules=[SOM],
                   "Introduction" => "index.md",
                   "Installation" => "inst.md",
                   "New skill tutorial" => "makeskill.md",
-                  "API Documentation" => Any[
-                            "API index" => "api/apiIndex.md",
-                            "Hermes" => "api/hermes.md",
-                            "Dialogues" => "api/dialogues.md",
-                            "config.ini" => "api/ini.md",
-                            "Slots" => "api/slots.md",
-                            "MQTT" => "api/mqtt.md",
-                            "Utilities" => "api/utils.md"
-                               ],
-                    "License" => "LICENSE.md"
+                  "API Documentation" => "api/api.md",
+                  "License" => "LICENSE.md"
                   ],
                   # Use clean URLs, unless built as a "local" build
           format = Documenter.HTML(prettyurls = !("local" in ARGS),
