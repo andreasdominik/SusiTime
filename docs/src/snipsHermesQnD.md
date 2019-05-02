@@ -93,7 +93,11 @@ sudo apt-get install mosquitto
 sudo apt-get install mosquitto-clients
 ```
 
+## Template skill
 
+The template ADoSnipsTemplate is already a fully functionla skill. To test it,
+just add the ADoSnipsTemplate-skill to your assistant in the Snips console and
+update your assistant with sam (`sam update-assistant`).
 
 ## SnipsHermesQnD details
 
