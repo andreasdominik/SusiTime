@@ -68,7 +68,7 @@ run-time-compiled only once, with consequences:
 * Future function calls will use the compiled program, making Julia
   code execute as fast as compiled C-code!
 
-## SnipsHermesQnD
+## Installation
 
 The framework SnipsHermesQnD is currently not distributed as an
 individual package, because it is work-in-progress and will change
@@ -93,9 +93,41 @@ sudo apt-get install mosquitto
 sudo apt-get install mosquitto-clients
 ```
 
-To use skills developped with SnipsHermesQnD just add the ADoSnipsHermesQnD
+### App ADoSnipsHermesQnD
+
+To use skills, developped with SnipsHermesQnD, just add the ADoSnipsHermesQnD
 App to your assistant. There are versions in German and English language
-(`ADoSnipsHermesQnD_DE` and `ADoSnipsHermesQnD_EN`)
+(`ADoSnipsHermesQnD_DE` and `ADoSnipsHermesQnD_EN`).
+
+### Adapt timeouts
+
+One major difference between the languages Python and Julia is that
+Julia is compiled only once at runtime with a compiler that produces
+highly optimised code.
+
+As a result, Julia code runs as fast as other compiled code, such as c code.
+The downside is the time necessary for compilation. Whereas Python scripts
+just run away when started (because the compile cost is averaged over the
+entire runtime), Julia functions need an extra time for compilation, when they
+are started for the first time.
+
+In consequence there is a time lack at the start of a Julia program; and
+for the same reason additional time is necessary when a function
+is executed for the first time.
+
+Some things need to be considered to handle this in the Snips environement:
+- When the Snips skill manager starts an assistant, the Julia apps
+  will need up to 1 minute on a Rsapberry Pi until they are ready.
+  When whatching the processes with `top` or `htop`, the Julia-processes
+  are visible at the top with 100% CPU load. This is the compiler!
+- The settings for `session_timeout` and `lambda_timeout` in the Snips
+  configuration file `snips.toml` should be set to a high value
+  (such as 2 minutes) in order to keep a session alive until the app reacts
+  the first time. This is only
+  an issue when a function behind an intent is executed for the first time.
+  Because Julia stores the compiled code, any subsequent call will be very
+  fast.
+
 
 ## Template skill
 
@@ -241,33 +273,33 @@ Sometimes it is necessary to control a device with a sequence of several
 comands. In this case it is not natural to speak the hotword everytime.
 like:
 
-*hey Snips*
-
-*switch on the light*
-
-*hey Snips*
-
-*dim the light*
-
-*hey Snips*
-
-*dim the light again*
-
-*hey Snips*
-
-*dim the light again*    
+> *hey Snips*
+>
+> *switch on the light*
+>
+> *hey Snips*
+>
+> *dim the light*
+>
+> *hey Snips*
+>
+> *dim the light again*
+>
+> *hey Snips*
+>
+> *dim the light again*    
 
 Instead, we want something like:
 
-*hey Snips*
-
-*switch on the light*
-
-*dim the light*
-
-*dim the light again*
-
-*dim the light again*    
+> *hey Snips*
+>
+> *switch on the light*
+>
+> *dim the light*
+>
+> *dim the light again*
+>
+> *dim the light again*    
 
 
 This can be achieved by starting a new session just after an intent is processed.
