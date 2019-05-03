@@ -241,21 +241,32 @@ Sometimes it is necessary to control a device with a sequence of several
 comands. In this case it is not natural to speak the hotword everytime.
 like:
 
-*hey Snips*<br/>
-*switch on the light*<br/>
-*hey Snips*<br/>
-*dim the light*<br/>
-*hey Snips*<br/>
-*dim the light again*<br/>
-*hey Snips*<br/>
+*hey Snips*
+
+*switch on the light*
+
+*hey Snips*
+
+*dim the light*
+
+*hey Snips*
+
+*dim the light again*
+
+*hey Snips*
+
 *dim the light again*    
 
 Instead, we want something like:
 
-*hey Snips*<br/>
-*switch on the light*<br/>
-*dim the light*<br/>
-*dim the light again*<br/>
+*hey Snips*
+
+*switch on the light*
+
+*dim the light*
+
+*dim the light again*
+
 *dim the light again*    
 
 

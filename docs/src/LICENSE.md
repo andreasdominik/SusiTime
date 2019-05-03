@@ -1,8 +1,7 @@
 This template and the SnipsHermesQnD framework is
-copyright (C) <br/>
-> Andreas Dominik<br/>
-> THM Gießen, Germany<br/>
-> May 2019
+copyright (C)
+
+> Andreas Dominik, THM Gießen, Germany, May 2019
 
 and licensed under the GPL3 license:
 
