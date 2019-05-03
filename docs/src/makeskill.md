@@ -74,7 +74,7 @@ can be derived from the template.
 
 The idea is to control an Amazon fire stick with a minimum set of commands
 `on, off, left, play`.
-More commands can be implement easily by following the same way.
+More commands can be implement easily the same way.
 
 Switching on and off is implemented, based on the common on-off-intent
 included in the framework.
@@ -174,7 +174,7 @@ end
 ```
 
 
-### The action-functions
+### The action-function for on/off
 
 This function are executed by the framework if an intent is
 recognised.
@@ -184,65 +184,82 @@ need a specific intent, that must be set up in the Snips console.
 
 ```Julia
 """
-function powerOn(topic, payload)
+function powerOnOff(topic, payload)
 
     Power on.
 """
-function powerOn(topic, payload)
+function powerOnOff(topic, payload)
 
-    Snips.publishEndSession("I wake up the Amazon Fire Stick.")
-    amazonON()
-    return true
+    if isOnOffMatched(payload, DEVICE_NAME) == :on
+        Snips.publishEndSession("I wake up the Amazon Fire Stick.")
+        amazonON()
+        return true
+
+    elseif isOnOffMatched(payload, DEVICE_NAME) == :off
+        Snips.publishEndSession("I send the Amazon Fire Stick to sleep.")
+        amazonOFF()
+        return true
+
+    else
+        return false
+    end
 end
+```
 
 
+### The action-function for all other commands
+
+All other commands must be handled by an intent that you must
+create in the Snips console.
+Let's assume the intent has the name `ControlAmazon` and delivers
+the command in the slot `Command`.
+The slot should know all known commands with synonyms.
+
+To handle this, a second action-function has to be defined in the file
+`skill-actions.jl`:
+
+```Julia
 """
-function powerOff(topic, payload)
+function commands(topic, payload)
 
-    Power off.
+    Send commands to Amamzon device.
 """
-function powerOff(topic, payload)
+function commands(topic, payload)
 
-    Snips.publishEndSession("I send the Amazon Fire Stick to sleep.")
-    amazonOFF()
-    return true
-end
+    if Snips.isInSlot(payload, SLOT_NAME, "play")
+        Snips.publishEndSession("I play the current selection!")
+        amazonPlay()
+        return true
 
+    elseif Snips.isInSlot(payload, SLOT_NAME, "pause")
+        Snips.publishEndSession("I pause the movie.")
+        amazonPause()
+        return true
 
-"""
-function play(topic, payload)
-
-    Send PLAY to Amamzon device.
-"""
-function play(topic, payload)
-
-    Snips.publishEndSession("I play the current selection!")
-    amazonPlay()
-    return true
-end
-
-
-"""
-function pause(topic, payload)
-
-    Pause the current movie.
-"""
-function pause(topic, payload)
-
-    Snips.publishEndSession("I pause the movie.")
-    amazonPause()
-    return true
+    else
+        Snips.publishEndSession("I cannot respond!")
+        return true
+    end
 end
 ```
 
 
 ### Tying everything together
 
-The last step is to tell the framework which function must be executed
-if Snips identifies an intent.
-This is configured in the file `config.jl`. The last lines of the file must
-be changed like:
+The last step is to tell the skill the names of intents to listen
+and the names of the slots to extract values from.
+Both is defined in the file `config.jl`:
+
+- The slot names are simply defined as global constants
+  (they are global within the Module Skill).
+- Intents and respective functions are stored in a Dictionary with
+  the intent names as keys and the functions as values.
+  (Please keep in mind, that intents are language-specific!)
 
 ```Julia
-INTENT_ACTIONS_DE = Dict{String, Function}()
-INTENT_ACTIONS_DE[""] = templateAction
+const SLOT_NAME = "Command"
+
+INTENT_ACTIONS = Dict{String, Function}()
+INTENT_ACTIONS["AdoSnipsOnOffEN"] = powerOnOff
+INTENT_ACTIONS["ControlAmazon"] = commands
+```
