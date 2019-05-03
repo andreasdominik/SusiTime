@@ -360,14 +360,19 @@ Depending on the payload the function returns:
 * `siteId`: siteId of the device to be matched with the payload of intent
 * `deviceName` : name of device to be matched with the payload of intent
 """
-function isOnOffMatched(payload, deviceName, siteId = CURRENT_SITE_ID)
+function isOnOffMatched(payload, deviceName; siteId = CURRENT_SITE_ID)
 
     result = :unmatched
+
+    commandSiteId = extractSlotValue(payload, "room")
+    if commandSiteId == nothing
+        commandSiteId = payload[:siteId]
+    end
 
     println("siteId, payload[:siteId]: $siteId, $(payload[:siteId])")
     println("deviceName: $deviceName")
 
-    if siteId == payload[:siteId]
+    if commandSiteId == siteId
 
         # test device name from payload
         #
