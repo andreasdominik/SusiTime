@@ -345,7 +345,7 @@ end
 
 
 """
-    isOnOffMatched(payload, siteId, deviceName)
+    isOnOffMatched(payload, deviceName; siteId = CURRENT_SITE_ID)
 
 Action to be combined with the ADoSnipsOnOFF intent.
 Depending on the payload the function returns:
@@ -360,7 +360,7 @@ Depending on the payload the function returns:
 * `siteId`: siteId of the device to be matched with the payload of intent
 * `deviceName` : name of device to be matched with the payload of intent
 """
-function isOnOffMatched(payload, siteId, deviceName)
+function isOnOffMatched(payload, deviceName, siteId = CURRENT_SITE_ID)
 
     result = :unmatched
 
