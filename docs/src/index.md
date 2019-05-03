@@ -8,7 +8,7 @@ To learn about Snips, goto [snips.ai](https://snips.ai/.)
 To get introduced with Julia, see [julialang.org](https://julialang.org/.)
 
 
-## Similariries and differences to the Hermes dialogue manager
+## Similarities and differences to the Hermes dialogue manager
 
 The framework allows for setting up skills/apps the same way as
 with the Python libraries. However, according to the more functional

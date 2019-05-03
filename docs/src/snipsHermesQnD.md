@@ -38,12 +38,12 @@ sudo ln -s /opt/Julia/julia-<version>/bin/julia
   **... and you are done!**
 
   For a very quick *get into,* see
-  [learn X in Y minutes](http://learnxinyminutes.com/docs/julia/).
+  [learn Julia in Y minutes](http://learnxinyminutes.com/docs/julia/).
 
 ### IDEs
 
 Softwarte development is made comfortable by
-IDEs (Integrated development environment). For Julia, best choices
+IDEs (Integrated Development Environements). For Julia, best choices
 include:
 
 * My favourite is the [Atom editor](http://atom.io/) with the
@@ -58,12 +58,12 @@ include:
 
 Julia code looks very much like Python code, except of
 * there are no colons,
-* whitespaces have no meaning; blocks end with `end`,
+* whitespaces have no meaning; blocks end with an `end`,
 * sometimes types should be given explicitly.
 
 However Julia a typed language with all advantages; and code is
 run-time-compiled only once, with consequences:
-* If a function is called the first time, there is a time lack, because
+* If a function is called for the first time, there is a time lack, because
   the compiler must finish his work before the actual code is executed.
 * Future function calls will use the compiled program, making Julia
   code execute as fast as compiled C-code!
@@ -99,7 +99,7 @@ App to your assistant. There are versions in German and English language
 
 ## Template skill
 
-The template ADoSnipsTemplate is already a fully functional skill. To test it,
+The template `ADosnipsTemplate` is already a fully functional skill. To test it,
 just add the ADoSnipsTemplate-skill to your assistant in the Snips console and
 update your assistant with sam (`sam update-assistant`).
 The skill is available in English and German and shows how the
@@ -156,7 +156,7 @@ Additional utilities are provided to
   control flow of a function
 - use a global intent for switching a device on or off
 - let Snips ask a question and get "yes" or "no" back as boolean value
-- let snips continue a conversation without the need to utter the
+- let Snips continue a conversation without the need to utter the
   hotword again.
 
 
@@ -180,10 +180,10 @@ All supported devices are listed in the slot `device` of the intent
 The app `ADoSnipsHermesQnD` has some code behind to handle unrecognised
 devises. The associated `config.ini` defines a list of unhandled devices.
 If you want to use the intent to swich an additional device on or off
-- first look in the config.ini, if the device is already defined and
+- firstly look in the config.ini, if the device is already defined and
   in the list of unhandled devices. In this case just remove it from the list,
   and the your code will be executed if the command is recognised.
-- anf if the new device is not already in the list, you will have to
+- secondly, if the new device is not already in the list, you will have to
   create a fork of the intent and add a new device to the values
   of the slot type `device_Type`.
 
@@ -208,15 +208,26 @@ of the user. This is provided by the framework function `askYesOrNo(question)`.
 See the following self-exlpaining code as example:
 
 ```Julia
-function selfDestruction(topic, payload)
+"""
+function destroyAction(topic, payload)
 
-    if askYesOrNo("Do you really want to blow up everything?")
-        Snips.publishEndSession("OK - self-destruction sequence started!")
-        boom()
-    else
-        Snips.publishEndSession("Self-destruction sequence aborted!")
-    end
-    return false
+    Initialise self-destruction.
+"""
+function destroyAction(topic, payload)
+
+  # log message:
+  println("- ADoSnipsDestroyYourself: action destroyAction() started.")
+
+  if askYesOrNo("Do you really want to initiate self-destruction?")
+    Snips.publishEndSession("Self-destruction sequence started!")
+    boom()
+  else
+    Snips.publishEndSession("""OK.
+                            Self-destruction sequence is aborted!
+                            Live long and in peace.""")
+  end
+
+  return true
 end
 ```
 
@@ -230,21 +241,21 @@ Sometimes it is necessary to control a device with a sequence of several
 comands. In this case it is not natural to speak the hotword everytime.
 like:
 
-*hey Snips*    
-*switch on the light*    
-*hey Snips*    
-*dim the light*    
-*hey Snips*    
-*dim the light again*    
-*hey Snips*    
+*hey Snips*<br/>
+*switch on the light*<br/>
+*hey Snips*<br/>
+*dim the light*<br/>
+*hey Snips*<br/>
+*dim the light again*<br/>
+*hey Snips*<br/>
 *dim the light again*    
 
-Instead we want something like:
+Instead, we want something like:
 
-*hey Snips*    
-*switch on the light*    
-*dim the light*    
-*dim the light again*    
+*hey Snips*<br/>
+*switch on the light*<br/>
+*dim the light*<br/>
+*dim the light again*<br/>
 *dim the light again*    
 
 
@@ -252,8 +263,8 @@ This can be achieved by starting a new session just after an intent is processed
 In the SnipsHermesQnD framework this is controlled by two mechanisms:
 
 The `config.jl` defines a constant `const CONTINUE_WO_HOTWORD = true`.
-`true` is the default and hence continuation without hotword is enable
-by default. To completly disable it for your skill, just set the constant
+`true` is the default and hence continuation without hotword is enabled
+by default. To completely disable it for your skill, just set the constant
 to `false`.    
 The second mechanism is the return value of every single skill-action.
 A new session will only be started if both are true, the
@@ -282,7 +293,7 @@ language=en
 #### 2) Define the texts in all languages:
 To let Snips speak different languages, all texts must be defined in
 a Dictionary with unique keys. These are defined in the file
-`languages.jl`, as shownin the Template:
+`languages.jl`, as shown in the Template:
 
 ```Julia
 TEXTS_DE = Dict(
@@ -308,7 +319,7 @@ Snips console - however this is necessary, because speach-to-text as well as
 natural language understanding highly depend on the language.
 
 
-#### 4) Make the all switch between languages:
+#### 4) Switch between languages:
 
 The `config.jl` of the template app shows how switching languages is
 possible within SnipsHermesQnD:

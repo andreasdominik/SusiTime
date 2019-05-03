@@ -7,14 +7,14 @@ making a new skill from this template in Julia language.
 ## Set up a new project
 
 To start with a new SnipsHermesQnD skill, just set up a new GitHub repository for
-the code of your skill,
+the code of your skill (such as mySkill),
 get a clone of the GitHub project ADoSnipsTemplate and
 define your repo as remote for the local clone of the template.
 
 All file- and directory names can be left unchanged; however you
 may want to rename the project directory and
 the file `action-ADoSnipsTemplate.jl` to a name
-thet identifies your new skill. The new name of the
+that identifies your new skill. The new name of the
 action-executable **must** start with
 `action-`, because the snips skill manager identifies executable
 apps by this naming convention:
@@ -32,8 +32,7 @@ git rm action-ADoSnipsTemplate.jl
 git add action-mySkill.jl
 git status
 git commit -m 'initial commit'
-git status
-git remote set-url origin git@github.com:andreasdominik/mySkill.jl.git
+git remote set-url origin git@github.com:yourGitHubName/mySkill.git
 git push origin master
 ```
 
@@ -56,10 +55,10 @@ In a minimum-setup only 2 things need to be adapted for a new
 skill:
 - the action-functions which respond to an intent (the *direct* action, no callback)
   must be definded and implemented (`skill-actions.jl`)
-- the action-functions must be connected with the cporresponding intent names
+- the action-functions must be connected with the corresponding intent names
   (`config.jl`).
 
-Optional, more fine-grained software engineering is possible by
+Optionally, more fine-grained software engineering is possible by
 - separating the user-interaction from the API of controlled devices (latter
   will go to `api.jl`)
 - adding multi-language support, by specifying phrases in different languages
@@ -73,10 +72,10 @@ This tutorial shows how a skill to control an external device
 can be derived from the template.
 
 The idea is to control an Amazon fire stick with a minimum set of commands
-`on, off, left, play`.
+`on, off, play, pause`.
 More commands can be implement easily the same way.
 
-Switching on and off is implemented, based on the common on-off-intent
+Switching on and off is implemented based on the common on-off-intent,
 included in the framework.
 
 
@@ -85,17 +84,19 @@ included in the framework.
 The low-level API which sends commands to the Amazon fire is borrowed from
 Matt's ADBee project (`git@github.com:mattgyver83/adbee.git`) that provides
 a shell-script to send commands to the Amazon device.
+Please read theer for the steps to prepare the Amazon device for
+the remote control via ADB.
 
-Although Python programmes usually find packages for every task, it is
+Although Python programmes usually find Python packages for every task, it is
 a very good idea to implement the lowest level af any device-control API
-as a shell script:
+as a shell script. Advantages:
 - easy to write
 - fast and without any overhead
-- easy to test, you can test the API by just running the script
+- easy to test: the API canbe tested by just running the script
   from commandline as `controlFire ON` or `controlFire OFF` and see
   what happens.
 
-  The simplified ADBee-script is:
+ The simplified ADBee-script is:
 
 ```sh
 #!/bin/bash -xv
@@ -133,14 +134,14 @@ Once this script is tested, the Julia API can be set up.
 
 ### The Julia API
 
-By default the API goes into the file api.jl, whichis empty
+By default the API goes into the file api.jl, which is empty
 in the template.
 
 In this case only a wrapper is needed, to make the API-commands
 available in the Julia program.
 The framework provide a function `tryrun()` to execute external
-commands safely (i.e. in an error occures, the program will not crash,
-but reading the error message via Hermes MQTT).
+commands safely (i.e. if an error occures, the program will not crash,
+but reading the error message via Hermes text to speech).
 
 This API definition splits in the function to execute the ADBee-script and
 functions to be called by the user:
@@ -174,9 +175,9 @@ end
 ```
 
 
-### The action-function for on/off
+### The skill-action for on/off
 
-This function are executed by the framework if an intent is
+This functions are executed by the framework if an intent is
 recognised.
 The functions are defined in the file `skill-actions.jl`.
 On/off is handled via the common on/off-intent, all other actions
@@ -186,7 +187,7 @@ need a specific intent, that must be set up in the Snips console.
 """
 function powerOnOff(topic, payload)
 
-    Power on.
+    Power on or of with SnipsHermesQnD mechanism.
 """
 function powerOnOff(topic, payload)
 
@@ -206,8 +207,13 @@ function powerOnOff(topic, payload)
 end
 ```
 
+Returning `false` will disable the *continue without hotword* function; i.e.
+a hotword is necessary before the next command can be uttered.
+This is necessary for the default-case, because probably a different
+app will execute this non-recognised command.
 
-### The action-function for all other commands
+
+### The skill-action for all other commands
 
 All other commands must be handled by an intent that you must
 create in the Snips console.
@@ -215,7 +221,7 @@ Let's assume the intent has the name `ControlAmazon` and delivers
 the command in the slot `Command`.
 The slot should know all known commands with synonyms.
 
-To handle this, a second action-function has to be defined in the file
+To handle this, a second skill-action has to be defined in the file
 `skill-actions.jl`:
 
 ```Julia
@@ -254,10 +260,11 @@ Both is defined in the file `config.jl`:
   (they are global within the Module Skill).
 - Intents and respective functions are stored in a Dictionary with
   the intent names as keys and the functions as values.
-  (Please keep in mind, that intents are language-specific!)
 
 ```Julia
 const SLOT_NAME = "Command"
+
+...
 
 INTENT_ACTIONS = Dict{String, Function}()
 INTENT_ACTIONS["AdoSnipsOnOffEN"] = powerOnOff
