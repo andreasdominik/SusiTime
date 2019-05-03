@@ -123,7 +123,7 @@ Return true if a parameter with name exists.
 ## Arguments:
     * `name`: name of the config parameter as Symbol
 """
-function isinConfig(name::Symbol)
+function isInConfig(name::Symbol)
 
     global CONFIG_INI
     return haskey(CONFIG_INI, name)
