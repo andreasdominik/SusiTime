@@ -24,7 +24,7 @@ const SLOT_WORD = "a_word"
 
 # name of entry in config.ini:
 #
-const INI_MY_NAME = my_name
+const INI_MY_NAME = "my_name"
 
 #
 # link between actions and intents:
