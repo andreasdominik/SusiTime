@@ -37,7 +37,7 @@ App organisation:
 * readConfig
 * matchConfig
 * getConfig
-* isinConfig
+* isInConfig
 
 other helpers:
 * tryrun

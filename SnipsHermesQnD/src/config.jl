@@ -112,7 +112,7 @@ end
 
 
 """
-    isinConfig(name::Symbol)
+    isInConfig(name::Symbol)
 
 Return true if a parameter with name exists.
 

@@ -17,7 +17,7 @@ function mainCallback(topic, payload)
     # run action for intent only if the siteId matches or if
     # siteId is not defined in config.ini:
     #
-    if Snips.isinConfig(:siteId) && !Snips.matchConfig(:siteId, payload[:siteId])
+    if Snips.isInConfig(:siteId) && !Snips.matchConfig(:siteId, payload[:siteId])
         return
     end
 

@@ -46,7 +46,7 @@ one extension:
 readConfig
 matchConfig
 getConfig
-isinConfig
+isInConfig
 getAllConfig
 ```
 
