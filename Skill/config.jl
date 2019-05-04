@@ -35,10 +35,10 @@ const INI_MY_NAME = "my_name"
 #     (such as: "switch TV in room abc").
 #
 INTENT_ACTIONS_DE = Dict{String, Function}()
-INTENT_ACTIONS_DE["ADoSnipsTemplateDE"] = templateAction
+INTENT_ACTIONS_DE["pleaseRepeatDE"] = templateAction
 
 INTENT_ACTIONS_EN = Dict{String, Function}()
-INTENT_ACTIONS_EN["ADoSnipsTemplateEN"] = templateAction
+INTENT_ACTIONS_EN["pleaseRepeatEN"] = templateAction
 
 
 
