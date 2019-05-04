@@ -39,6 +39,7 @@ function templateAction(topic, payload)
     # say who you are:
     #
     Snips.publishSay(TEXTS[:bravo], lang = LANG)
-    Snips.publishEndSession("$(TEXTS[:iam]) $myName and $(TEXTS[:isay]) $word")
+    Snips.publishEndSession("""$(TEXTS[:iam]) $myName.
+                            $(TEXTS[:isay]) $word""")
     return true
 end
