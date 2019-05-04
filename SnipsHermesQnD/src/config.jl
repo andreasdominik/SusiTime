@@ -83,13 +83,9 @@ values is read.
 ## Arguments:
 * `name`: name of the config parameter as Symbol or String
 """
-function getConfig(name)
+function getConfig(name::Symbol)
 
     global CONFIG_INI
-
-    if !(name isa Symbol)
-        name = Symbol(name)
-    end
 
     if haskey(CONFIG_INI, name)
         return CONFIG_INI[name]
