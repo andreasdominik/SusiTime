@@ -132,11 +132,14 @@ end
 
 
 """
-    setSessionId(siteId)
+    setSessionId(sessionId)
 
 Set the sessionId in the Module SnipsHermesQnD.
 The sessionId will be used to publish Hermes messages
-inside a runing session. The framework handles thi sin the background.
+inside a runing session. The framework handles this in the background.
+
+## Arguments:
+* sessionId: as String from a Hermes payload.
 """
 function setSessionId(sessionId)
 
@@ -146,7 +149,7 @@ end
 """
     getSessionId()
 
-Return the sessionId as set in the Module SnipsHermesQnD
+Return the sessionId of the currently running session.
 """
 function getSessionId()
 

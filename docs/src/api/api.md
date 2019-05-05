@@ -86,6 +86,8 @@ when develloping a skill.
 ```@docs
 setSiteId
 getSiteId
+setSessionId
+getSessionId
 ```
 
 
