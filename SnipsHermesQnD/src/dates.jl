@@ -35,8 +35,8 @@ Dates.LOCALES["german"] = Dates.DateLocale(german_months, german_monts_abbrev,
 
 
 """
-    function mkDateTime(datetime::AbstractString; lang = LANG)
-    function mkDateTime(datetime::DateTime; lang = LANG)
+    function readableDateTime(datetime::AbstractString; lang = LANG)
+    function readableDateTime(datetime::DateTime; lang = LANG)
 
 Return human readable date and time, like
 "Friday, 1. January 2018",  "9 15"
@@ -51,7 +51,7 @@ Supported languages: "en", "de", "fr".
 ## Value:
 String value with readable date and time.
 """
-function mkDateTime(datetime::AbstractString; lang = LANG, wholeDay = false)
+function readableDateTime(datetime::AbstractString; lang = LANG, wholeDay = false)
 
     # remove time zone and make DateTime object:
     #
@@ -66,12 +66,12 @@ function mkDateTime(datetime::AbstractString; lang = LANG, wholeDay = false)
 
     # make date String:
     #
-    return mkDateTime(d, lang = lang, wholeDay = wholeDay)
+    return readableDateTime(d, lang = lang, wholeDay = wholeDay)
 end
 
 
 
-function mkDateTime(datetime::DateTime; lang = LANG, wholeDay = false)
+function readableDateTime(datetime::DateTime; lang = LANG, wholeDay = false)
 
     # set locale:
     #

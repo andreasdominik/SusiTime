@@ -94,6 +94,7 @@ getSessionId
 ### Other Utils
 ```@docs
 setLanguage
+readableDateTime
 tryrun
 tryReadTextfile
 tryParseJSONfile
