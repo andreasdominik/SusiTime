@@ -133,17 +133,25 @@ end
     setLanguage(lang)
 
 Set the default language for SnipsHermesQnD.
+Currently supported laguages are "en" and "de".
+
+This will affect publishSay() and all system messages.
+Log-messages will always be in English.
+
+## Arguments
+* lang: one of `"en"` or `"de"`.
 """
 function setLanguage(lang)
 
-    global LANG = lang
+    if lang != nothing
+        global LANG = lang
+    else
+        global LANG = DEFAULT_LANG
+    end
 
-    if lang == "en"
-        TEXTS = TEXTS_EN
-    elseif lang == "de"
+    if LANG == "de"
         TEXTS = TEXTS_DE
     else
         TEXTS = TEXTS_EN
     end
-
 end

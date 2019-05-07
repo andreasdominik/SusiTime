@@ -13,6 +13,7 @@ MODULE_DIR = dirname(Base.source_path())
 const APP_DIR = "$MODULE_DIR/.."
 
 Snips.readConfig("$APP_DIR")
+Snips.setLanguage(Snips.getConfig(:language))
 
 include("api.jl")
 include("skill-actions.jl")
