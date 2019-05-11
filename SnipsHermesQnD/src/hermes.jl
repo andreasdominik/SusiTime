@@ -105,7 +105,7 @@ function askYesOrNoOrUnknown(question)
     # publishStartSessionAction(question, siteId = CURRENT_SITE_ID,
     #           intentFilter = intentListen,
     #           sendIntentNotRecognized = true)
-    topic, payload = listenIntentsOnetime(intentListen,
+    topic, payload = listenIntentsOneTime(intentListen,
                             moreTopics = topicsListen)
 
     configureIntent(intentListen, false)
@@ -407,7 +407,7 @@ function configureIntent(intent, on)
     topic = "hermes/dialogueManager/configure"
 
     payload = Dict(:siteId=>CURRENT_SITE_ID,
-                   :intents=>[Dict(:intentId=>intent, :enable=>onoff)])
+                   :intents=>[Dict(:intentId=>intent, :enable=>on)])
 
     publishMQTT(topic, payload)
 end

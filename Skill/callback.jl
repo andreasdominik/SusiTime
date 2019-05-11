@@ -26,6 +26,10 @@ function mainCallback(topic, payload)
         Snips.setSessionId(payload[:sessionId])
         result = INTENT_ACTIONS[intent](topic, payload)
 
+        # fix, if the action does not return true or false:
+        #
+        (result isa Boolean) || result = false
+
         if CONTINUE_WO_HOTWORD && result
             Snips.publishStartSessionAction("")
         end
