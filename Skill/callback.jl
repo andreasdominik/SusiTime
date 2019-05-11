@@ -28,7 +28,7 @@ function mainCallback(topic, payload)
 
         # fix, if the action does not return true or false:
         #
-        (result isa Boolean) || result = false
+        (result isa Bool) || result = false
 
         if CONTINUE_WO_HOTWORD && result
             Snips.publishStartSessionAction("")
