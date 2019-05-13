@@ -4,13 +4,15 @@
 # Normally, it is NOT necessary to change anything in this file,
 # unless you know what you are doing!
 #
-module Skill
-
-import Main.SnipsHermesQnD
-Snips = SnipsHermesQnD
+module ADoSnipsTemplate
 
 MODULE_DIR = dirname(Base.source_path())
 const APP_DIR = "$MODULE_DIR/.."
+
+include("$APP_DIR/SnipsHermesQnD/src/SnipsHermesQnD.jl")
+import Main.SnipsHermesQnD
+Snips = SnipsHermesQnD
+
 
 Snips.readConfig("$APP_DIR")
 Snips.setLanguage(Snips.getConfig(:language))
@@ -21,8 +23,12 @@ include("callback.jl")
 include("languages.jl")
 include("config.jl")
 
+# only exported function:
+#
+function getIntentActions()
+    return SKILL_INTENT_ACTIONS
+end
 
-export mainCallback,
-       INTENT_ACTIONS, DEVELOPER_NAME
+export getIntentActions
 
 end
