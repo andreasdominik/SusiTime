@@ -17,9 +17,13 @@ Snips = SnipsHermesQnD
 Snips.readConfig("$APP_DIR")
 Snips.setLanguage(Snips.getConfig(:language))
 
+# List of intents to listen to:
+#
+SKILL_INTENT_ACTIONS = Tuple{AbstractString,Function}[]
+
 include("api.jl")
 include("skill-actions.jl")
-include("callback.jl")
+include("intents.jl")
 include("languages.jl")
 include("config.jl")
 
