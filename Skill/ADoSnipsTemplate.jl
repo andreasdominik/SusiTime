@@ -6,11 +6,15 @@
 #
 module ADoSnipsTemplate
 
-MODULE_DIR = dirname(Base.source_path())
-const APP_DIR = "$MODULE_DIR/.."
-
-include("$APP_DIR/SnipsHermesQnD/src/SnipsHermesQnD.jl")
-import Main.SnipsHermesQnD
+const MODULE_DIR = @__DIR__
+const APP_DIR = replace(MODULE_DIR, r"/[^/]*/?$"=>"")
+const SKILLS_DIR = replace(APP_DIR, r"/[^/]*/?$"=>"")
+# const MODULE_DIR = dirname(Base.source_path())
+# const APP_DIR = "$MODULE_DIR/.."
+# include("$APP_DIR/SnipsHermesQnD/src/SnipsHermesQnD.jl")
+const FRAMEWORK_DIR = "$SKILLS_DIR/ADoSnipsQnD"
+include("$FRAMEWORK_DIR/SnipsHermesQnD/src/SnipsHermesQnD.jl")
+import .SnipsHermesQnD
 Snips = SnipsHermesQnD
 
 
@@ -22,13 +26,9 @@ include("api.jl")
 include("skill-actions.jl")
 include("languages.jl")
 include("config.jl")
+include("exported.jl")
 
-# exported function:
-#
-function getIntentActions()
-    return Snips.getIntentActions()
-end
 
-export getIntentActions
+export getIntentActions, callBackrun
 
 end

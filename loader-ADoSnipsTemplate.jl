@@ -1,5 +1,3 @@
-#!/usr/local/bin/julia
-#
 # main loader skill script.
 #
 # Normally, it is NOT necessary to change anything in this file,
@@ -14,4 +12,4 @@ include("$APP_DIR/Skill/ADoSnipsTemplate.jl")
 import Main.ADoSnipsTemplate
 
 global INTENT_ACTIONS
-merge!(INTENT_ACTIONS, ADoSnipsTemplate.getIntentActions())
+append!(INTENT_ACTIONS, ADoSnipsTemplate.getIntentActions())
