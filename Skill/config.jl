@@ -34,23 +34,15 @@ const INI_MY_NAME = "my_name"
 #   * if the siteId matches, if site is  defined in config.ini
 #     (such as: "switch TV in room abc").
 #
-SKILL_INTENT_ACTIONS_DE = Dict{String, Function}()
-SKILL_INTENT_ACTIONS_DE["pleaseRepeatDE"] = templateAction
-
-SKILL_INTENT_ACTIONS_EN = Dict{String, Function}()
-SKILL_INTENT_ACTIONS_EN["pleaseRepeatEN"] = templateAction
-
-
-
 # Language-dependent settings:
 #
 if LANG == "de"
-    SKILL_INTENT_ACTIONS = SKILL_INTENT_ACTIONS_DE
+    Snips.registerIntentAction("pleaseRepeatDE", DEVELOPER_NAME, templateAction)
     TEXTS = TEXTS_DE
 elseif LANG == "en"
-    SKILL_INTENT_ACTIONS = SKILL_INTENT_ACTIONS_EN
+    Snips.registerIntentAction("pleaseRepeatEN", DEVELOPER_NAME, templateAction)
     TEXTS = TEXTS_EN
 else
-    SKILL_INTENT_ACTIONS = SKILL_INTENT_ACTIONS_DE
-    TEXTS = TEXTS_DE
+    Snips.registerIntentAction("pleaseRepeatEN", DEVELOPER_NAME, templateAction)
+    TEXTS = TEXTS_EN
 end
