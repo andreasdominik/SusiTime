@@ -11,29 +11,29 @@ fi
 
 # install Julia dependencies:
 #
-julia -e 'using Pkg;  Pkg.add("JSON"); Pkg.add("StatsBase"); Pkg.update(); Pkg.status()'
+# julia -e 'using Pkg;  Pkg.add("JSON"); Pkg.add("StatsBase"); Pkg.update(); Pkg.status()'
 
 
 # check debian packages:
 #
-check_package () {
-  PACK=$1
-  dpkg -l $PACK
-  STATUS=$?
-
-  if [ $STATUS -ne 0 ] ; then
-    echo " "
-    echo "Package $PACK is not installed!"
-    echo "Please install manually on Raspberry pi with:"
-    echo "   $ sudo apt-get install $PACK"
-  fi
-}
-
-# check mosquitto installation:
+# check_package () {
+#   PACK=$1
+#   dpkg -l $PACK
+#   STATUS=$?
 #
-echo "... checking mosquitto installation"
-check_package mosquitto
-check_package mosquitto-clients
+#   if [ $STATUS -ne 0 ] ; then
+#     echo " "
+#     echo "Package $PACK is not installed!"
+#     echo "Please install manually on Raspberry pi with:"
+#     echo "   $ sudo apt-get install $PACK"
+#   fi
+# }
+#
+# # check mosquitto installation:
+# #
+# echo "... checking mosquitto installation"
+# check_package mosquitto
+# check_package mosquitto-clients
 
 
 # eof.
