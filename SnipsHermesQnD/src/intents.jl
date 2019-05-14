@@ -1,17 +1,17 @@
 """
-    function registerIntentAction(intent, action; list = SKILL_INTENT_ACTIONS)
+    function registerIntentAction(intent, devName, action)
 
 Add an intent to the list of intents to be listened.
 
 ## Arguments:
 - intent: Name of the intend (without developer name)
+- devName: Name of skill developer
 - action: the function to be linked with the intent
-- list: optional keyword arg: List to which the intent should be added.
-        default: SKILL_INTENT_ACTIONS
 """
-function registerIntentAction(intent, action; list = SKILL_INTENT_ACTIONS)
+function registerIntentAction(intent, devName, action)
 
-    push!(list, (intent, actoin))
+    global SKILL_INTENT_ACTIONS
+    push!(SKILL_INTENT_ACTIONS, (intent, devName, action))
 end
 
 
@@ -26,7 +26,8 @@ to the Main context.
 - list: optional keyword arg: List which should be delivered.
         default: SKILL_INTENT_ACTIONS
 """
-function getIntentActions(;list = SKILL_INTENT_ACTIONS)
+function getIntentActions()
 
-    return list
+    global SKILL_INTENT_ACTIONS
+    return SKILL_INTENT_ACTIONS
 end

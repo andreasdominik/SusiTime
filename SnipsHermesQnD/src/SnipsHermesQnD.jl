@@ -8,6 +8,7 @@ include("utils.jl")
 include("snips.jl")
 include("mqtt.jl")
 include("hermes.jl")
+include("intents.jl")
 include("config.jl")
 include("dates.jl")
 include("gpio.jl")
@@ -24,11 +25,16 @@ LANG = DEFAULT_LANG
 TEXTS = TEXTS_EN
 setLanguage(LANG)
 
+# List of intents to listen to:
+#
+SKILL_INTENT_ACTIONS = Tuple{AbstractString,Function}[]
+
 export subscribeMQTT, readOneMQTT, publishMQTT,
        subscribe2Intents, listenIntentsOneTime,
        publishEndSession, publishContinueSession,
        publishStartSessionAction, publishStartSessionNotification,
        configureIntent,
+       registerIntentAction, getIntentActions,
        askYesOrNoOrUnknown, askYesOrNo,
        publishSay,
        setLanguage, setSiteId, getSiteId,

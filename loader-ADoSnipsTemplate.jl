@@ -9,8 +9,9 @@
 # A. Dominik, May 2019, © GPL3
 #
 
-APP_DIR = dirname(Base.source_path())
-include("$APP_DIR/ADoSnipsTemplate/src/ADoSnipsTemplate.jl")
+APP_DIR = @__DIR__
+include("$APP_DIR/Skill/ADoSnipsTemplate.jl")
 import Main.ADoSnipsTemplate
 
+global INTENT_ACTIONS
 merge!(INTENT_ACTIONS, ADoSnipsTemplate.getIntentActions())
