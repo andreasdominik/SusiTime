@@ -15,7 +15,7 @@ const LANG = (lang != nothing) ? lang : "de"
 #
 const CONTINUE_WO_HOTWORD = true
 const DEVELOPER_NAME = "andreasdominik"
-Snips.getDeveloperName(DEVELOPER_NAME)
+Snips.setDeveloperName(DEVELOPER_NAME)
 Snips.setModule(@__MODULE__)
 
 # Slots:
