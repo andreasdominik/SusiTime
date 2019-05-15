@@ -17,7 +17,6 @@ function callbackRun(fun, topic, payload)
 
     Snips.setSiteId(payload[:siteId])
     Snips.setSessionId(payload[:sessionId])
-    Snips.setModule(@__MODULE__)
     Snips.setIntent(topic)
     result = fun(topic, payload)
 

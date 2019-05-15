@@ -16,6 +16,7 @@ const LANG = (lang != nothing) ? lang : "de"
 const CONTINUE_WO_HOTWORD = true
 const DEVELOPER_NAME = "andreasdominik"
 Snips.setDevelopperName(DEVELOPPER_NAME)
+Snips.setModule(@__MODULE__)
 
 # Slots:
 # Name of slots to be extracted from intents:
