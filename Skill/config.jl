@@ -38,15 +38,12 @@ const INI_MY_NAME = "my_name"
 # Language-dependent settings:
 #
 if LANG == "de"
-    Snips.registerIntentAction("pleaseRepeatDE", DEVELOPER_NAME,
-                                @__MODULE__, templateAction)
+    Snips.registerIntentAction("pleaseRepeatDE", templateAction)
     TEXTS = TEXTS_DE
 elseif LANG == "en"
-    Snips.registerIntentAction("pleaseRepeatEN", DEVELOPER_NAME,
-                                @__MODULE__, templateAction)
+    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
     TEXTS = TEXTS_EN
 else
-    Snips.registerIntentAction("pleaseRepeatEN", DEVELOPER_NAME,
-                                @__MODULE__, templateAction)
+    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
     TEXTS = TEXTS_EN
 end
