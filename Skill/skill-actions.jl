@@ -18,7 +18,7 @@ function templateAction(topic, payload)
 function templateAction(topic, payload)
 
     # log:
-    println("- ADoSnipsTemplate: action templateAction() started.")
+    println("[ADoSnipsTemplate]: action templateAction() started.")
 
     # get my name from config.ini:
     #
@@ -38,7 +38,7 @@ function templateAction(topic, payload)
 
     # say who you are:
     #
-    Snips.publishSay(TEXTS[:bravo], lang = LANG)
+    Snips.publishSay(TEXTS[:bravo])
     Snips.publishEndSession("""$(TEXTS[:iam]) $myName.
                             $(TEXTS[:isay]) $word""")
     return true
