@@ -24,7 +24,7 @@ function templateAction(topic, payload)
     #
     myName = Snips.getConfig(INI_MY_NAME)
     if myName == nothing
-        Snips.publishEndSession(TEXTS[:noname])
+        Snips.publishEndSession(Snips.text(:noname))
         return false
     end
 
@@ -32,14 +32,14 @@ function templateAction(topic, payload)
     #
     word = Snips.extractSlotValue(payload, SLOT_WORD)
     if word == nothing
-        Snips.publishEndSession(TEXTS[:dunno])
+        Snips.publishEndSession(Snips.text(:dunno))
         return true
     end
 
     # say who you are:
     #
-    Snips.publishSay(TEXTS[:bravo])
-    Snips.publishEndSession("""$(TEXTS[:iam]) $myName.
-                            $(TEXTS[:isay]) $word""")
+    Snips.publishSay(Snips.text(:bravo))
+    Snips.publishEndSession("""$(Snips.text(:iam)) $myName.
+                            $(Snips.text(:isay)) $word""")
     return true
 end

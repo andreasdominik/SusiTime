@@ -39,11 +39,8 @@ const INI_MY_NAME = "my_name"
 #
 if LANG == "de"
     Snips.registerIntentAction("pleaseRepeatDE", templateAction)
-    TEXTS = TEXTS_DE
 elseif LANG == "en"
     Snips.registerIntentAction("pleaseRepeatEN", templateAction)
-    TEXTS = TEXTS_EN
 else
     Snips.registerIntentAction("pleaseRepeatEN", templateAction)
-    TEXTS = TEXTS_EN
 end
