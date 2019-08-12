@@ -15,13 +15,23 @@ end
 #
 function callbackRun(fun, topic, payload)
 
+    Snips.setTopic(topic)
+
     if occursin(r"^hermes/intent/", topic)
         Snips.setSiteId(payload[:siteId])
         Snips.setSessionId(payload[:sessionId])
         Snips.setIntent(topic)
+
+        if Snips.isFalseDetection(payload)
+            println("[$(Snips.getIntent())]: Intent $(Snips.getIntent()) aborted.")
+            println("                    false detection recognised for command:")
+            println("                    $(payload[:input]).")
+
+            Snips.publishEndSession("")
+            return false
+        end
     end
 
-    Snips.setTopic(topic)
     result = fun(topic, payload)
 
     # fix, if the action does not return true or false:
