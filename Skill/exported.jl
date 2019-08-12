@@ -18,6 +18,7 @@ function callbackRun(fun, topic, payload)
     if occursin(r"^hermes/intent/", topic)
         Snips.setSiteId(payload[:siteId])
         Snips.setSessionId(payload[:sessionId])
+        Snips.setIntent(topic)
     end
 
     Snips.setTopic(topic)
