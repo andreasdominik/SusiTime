@@ -18,7 +18,7 @@ function templateAction(topic, payload)
 function templateAction(topic, payload)
 
     # log:
-    println("[ADoSnipsTemplate]: action templateAction() started.")
+    Snips.printLog("action templateAction() started.")
     Snips.printDebug("""Intent: $(Snips.getIntent())""")
 
     # get my name from config.ini:
