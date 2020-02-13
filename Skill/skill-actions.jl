@@ -19,12 +19,17 @@ function templateAction(topic, payload)
 
     # log:
     Snips.printLog("action templateAction() started.")
-    Snips.printDebug("""Intent: $(Snips.getIntent())""")
 
-    # get my name from config.ini:
+    # get my name from susi.toml:
     #
-    myName = Snips.getConfig(INI_MY_NAME)
-    if myName == nothing
+    config = Snips.getSusiToml()
+    Snips.printDebug("""Intent:  $(Snips.getIntent()) $config""")
+
+    if haskey(config, "assistant") && haskey(config["assistant"], "name") &&
+       !isempty(config["assistant"]["name"])
+        myname = config["assistant"]["name"]
+    else
+        myName == nothing
         Snips.publishEndSession(:noname)
         return false
     end
@@ -39,8 +44,9 @@ function templateAction(topic, payload)
 
     # say who you are:
     #
+    Snips.printDebug("Name is: $myname , Wort is: $word")
     Snips.publishSay(:bravo)
-    Snips.publishEndSession("""$(Snips.langText(:iam)) $myName.
-                            $(Snips.langText(:isay)) $word""")
+    Snips.publishSay("$(Snips.langText(:iam)) $myname")
+    Snips.publishEndSession("$(Snips.langText(:isay)) $word")
     return true
 end
