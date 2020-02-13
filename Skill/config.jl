@@ -35,12 +35,4 @@ const INI_MY_NAME = "my_name"
 #   * if the siteId matches, if site is  defined in config.ini
 #     (such as: "switch TV in room abc").
 #
-# Language-dependent settings:
-#
-if LANG == "de"
-    Snips.registerIntentAction("pleaseRepeatDE", templateAction)
-elseif LANG == "en"
-    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
-else
-    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
-end
+Snips.registerIntentAction("pleaseRepeat", templateAction)

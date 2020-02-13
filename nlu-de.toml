@@ -1,0 +1,28 @@
+# Intent definition for template skill
+#
+#  (c) A. Dominik, 2020
+#
+skill = "ADoSnipsTemplate"
+developer = "andreasdominik"
+
+
+[inventory]
+intents = ["pleaseRepeat"]
+slots = ["a_word"]
+
+
+# define slots:
+# Types: Any/List/InstantTime/Currency/Number/Ordinal/...
+#
+[a_word]
+slot_type = "Any"
+# allow_empty = false
+
+
+# define phrases for intent recognition:
+# exact, regex, part
+#
+[pleaseRepeat]
+# disable_on_start = false
+template_action_a = "partial: <<Bitte|>> wiederhole <<bitte|>> <<das Wort|>> <<a_word>>"
+template_action_b = "partial: <<Bitte|>> sprich mir <<bitte|>> <<das Wort|>> nach <<a_word>>"
