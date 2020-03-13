@@ -13,7 +13,7 @@ const LANG = (lang != nothing) ? lang : "de"
 # set CONTINUE_WO_HOTWORD to true to be able to chain
 # commands without need of a hotword in between:
 #
-const CONTINUE_WO_HOTWORD = true
+const CONTINUE_WO_HOTWORD = false
 const DEVELOPER_NAME = "andreasdominik"
 Snips.setDeveloperName(DEVELOPER_NAME)
 Snips.setModule(@__MODULE__)
@@ -21,11 +21,9 @@ Snips.setModule(@__MODULE__)
 # Slots:
 # Name of slots to be extracted from intents:
 #
-const SLOT_WORD = "a_word"
 
 # name of entry in config.ini:
 #
-const INI_MY_NAME = "my_name"
 
 #
 # link between actions and intents:
@@ -35,4 +33,4 @@ const INI_MY_NAME = "my_name"
 #   * if the siteId matches, if site is  defined in config.ini
 #     (such as: "switch TV in room abc").
 #
-Snips.registerIntentAction("pleaseRepeat", templateAction)
+Snips.registerIntentAction("SayTime", timeAction)

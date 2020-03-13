@@ -15,38 +15,12 @@ function templateAction(topic, payload)
 
     Dummyaction for the template.
 """
-function templateAction(topic, payload)
+function timeAction(topic, payload)
 
     # log:
     Snips.printLog("action templateAction() started.")
+    timeStr = Snips.readableDateTime(Dates.now(), onlyTime=true)
 
-    # get my name from susi.toml:
-    #
-    config = Snips.getSusiToml()
-    Snips.printDebug("""Intent:  $(Snips.getIntent()) $config""")
-
-    if haskey(config, "assistant") && haskey(config["assistant"], "name") &&
-       !isempty(config["assistant"]["name"])
-        myname = config["assistant"]["name"]
-    else
-        myName == nothing
-        Snips.publishEndSession(:noname)
-        return false
-    end
-
-    # get the word to repeat from slot:
-    #
-    word = Snips.extractSlotValue(payload, SLOT_WORD)
-    if word == nothing
-        Snips.publishEndSession(:dunno)
-        return true
-    end
-
-    # say who you are:
-    #
-    Snips.printDebug("Name is: $myname , Wort is: $word")
-    Snips.publishSay(:bravo)
-    Snips.publishSay("$(Snips.langText(:iam)) $myname")
-    Snips.publishEndSession("$(Snips.langText(:isay)) $word")
+    Snips.publishEndSession("$(Snips.langText(:isay)) $timeStr")
     return true
 end
