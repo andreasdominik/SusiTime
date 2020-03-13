@@ -21,6 +21,6 @@ slots = []
 #
 [SayTime]
 # disable_on_start = false
-say_time_action_a = "complete: <<please|>> tell me what time it is <<please|>>"
-say_time_action_b = "complete: what time is it <<please|>>"
+say_time_action_a = "exact: <<please|>> tell me what time it is <<please|>>"
+say_time_action_b = "exact: what time is it <<please|>>"
 say_time_action_c = "partial: do you happen to know what time it is"
