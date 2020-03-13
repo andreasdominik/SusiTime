@@ -2,27 +2,25 @@
 #
 #  (c) A. Dominik, 2020
 #
-skill = "ADoSnipsTemplate"
+skill = "SusiTime"
 developer = "andreasdominik"
 
 
 [inventory]
-intents = ["pleaseRepeat"]
-slots = ["a_word"]
+intents = ["SayTime"]
+slots = []
 
 
 # define slots:
 # Types: Any/List/InstantTime/Currency/Number/Ordinal/...
 #
-[a_word]
-slot_type = "Any"
-# allow_empty = false
 
 
 # define phrases for intent recognition:
 # exact, regex, part
 #
-[pleaseRepeat]
+[SayTime]
 # disable_on_start = false
-template_action_a = "partial: <<Bitte|>> wiederhole <<bitte|>> <<das Wort|>> <<a_word>>"
-template_action_b = "partial: <<Bitte|>> sprich mir <<bitte|>> <<das Wort|>> nach <<a_word>>"
+say_time_action_a = "complete: <<Bitte|>> sage? mir wie spät es ist"
+say_time_action_b = "complete: wie spät ist es"
+say_time_action_c = "complete: wie viel Uhr ist es"
