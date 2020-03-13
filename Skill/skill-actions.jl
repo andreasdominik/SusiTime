@@ -20,10 +20,8 @@ function timeAction(topic, payload)
     # log:
     Snips.printLog("action templateAction() started.")
     Snips.printLog("LANG is $LANG")
-    
+
     timeStr = Snips.readableDateTime(Dates.now(), onlyTime=true)
-
-
 
     Snips.publishEndSession("$(Snips.langText(:isay)) $timeStr")
     return true
