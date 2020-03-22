@@ -5,8 +5,6 @@
 #    desired language as defined in languages.jl:
 #
 
-const LANG = Snips.getLanguage()
-
 # DO NOT CHANGE THE FOLLOWING 3 LINES UNLESS YOU KNOW
 # WHAT YOU ARE DOING!
 # set CONTINUE_WO_HOTWORD to true to be able to chain
@@ -17,7 +15,7 @@ const DEVELOPER_NAME = "andreasdominik"
 Snips.setDeveloperName(DEVELOPER_NAME)
 Snips.setModule(@__MODULE__)
 
-# LANG in QnD(Snips) is defined from susi.toml or set
+# Snips.LANG in QnD(Snips) is defined from susi.toml or set
 # to "en" if no susi.toml found.
 # This will override LANG by config.ini if a key "language"
 # is defined locally:
@@ -28,7 +26,9 @@ end
 # or LANG can be set manually here:
 # Snips.setLanguage("fr")
 #
-LANG = Snips.getLanguage()
+# set a local const with LANG:
+#
+const LANG = Snips.getLanguage()
 
 
 
