@@ -17,6 +17,14 @@ const DEVELOPER_NAME = "andreasdominik"
 Snips.setDeveloperName(DEVELOPER_NAME)
 Snips.setModule(@__MODULE__)
 
+# override LANG if in config.ini:
+#
+if isConfigValid(:language)
+    Snips.setLanguage(Snips.getConfig(:language))
+end
+LANG = Snips.getLanguage()
+
+
 # Slots:
 # Name of slots to be extracted from intents:
 #
