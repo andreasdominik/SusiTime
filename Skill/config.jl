@@ -17,12 +17,19 @@ const DEVELOPER_NAME = "andreasdominik"
 Snips.setDeveloperName(DEVELOPER_NAME)
 Snips.setModule(@__MODULE__)
 
-# override LANG if in config.ini:
+# LANG in QnD(Snips) is defined from susi.toml or set
+# to "en" if no susi.toml found.
+# This will override LANG by config.ini if a key "language"
+# is defined locally:
 #
-if isConfigValid(:language)
+if Snips.isConfigValid(:language)
     Snips.setLanguage(Snips.getConfig(:language))
 end
+# or LANG can be set manually here:
+# Snips.setLanguage("fr")
+#
 LANG = Snips.getLanguage()
+
 
 
 # Slots:
